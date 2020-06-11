@@ -36,3 +36,25 @@ function getCellElements (currentRowElement) {
 //
 // You can, of course, remove any comments in this starter project once
 // you have read them, if you prefer.
+
+
+let cellElementArrayNoList =[]
+for ( let counterFullList = 0; counterFullList < rowElements.length; counterFullList++){
+    cellElementArrayNoList.push(getCellElements(rowElements[counterFullList]))
+}
+
+replaceAllButton.addEventListener('click', function () {
+    let userSelection = findInput.value
+    let userReplace = replaceInput.value
+    for ( let counterSelectedRow = 0; counterSelectedRow < cellElementArrayNoList.length; counterSelectedRow++){
+        let selectedRow = cellElementArrayNoList[counterSelectedRow]
+        for (let counterSelectedCell = 0; counterSelectedCell < selectedRow.length; counterSelectedCell++){
+            let selectedCell = selectedRow[counterSelectedCell]
+            if (selectedCell.innerHTML.includes(userSelection)){
+                selectedCell.innerHTML = selectedCell.innerHTML.replace(userSelection, userReplace)
+            }
+        }
+    }
+})
+
+
